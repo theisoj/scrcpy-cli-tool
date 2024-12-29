@@ -21,7 +21,7 @@ A simple command-line tool for automatically updating and managing scrcpy using 
 
 ## Usage
 
-To update and manage scrcpy, place the `scrcpy-cli-tool.ps1` file in the following directory based on your operating system:
+To update and manage scrcpy, place the `scrcpy-cli.ps1` file in the following directory based on your operating system:
 
 - **Windows**: `C:\scrcpy`
 - **macOS**: `/usr/local/bin/scrcpy`
@@ -29,7 +29,7 @@ To update and manage scrcpy, place the `scrcpy-cli-tool.ps1` file in the followi
 
 Then, run the following command in PowerShell:
 ```powershell
-.\scrcpy-cli-tool.ps1
+.\scrcpy-cli.ps1
 ```
 
 ## Contributing
@@ -66,9 +66,18 @@ PowerShell comes pre-installed on Windows 10 and later. For older versions, down
 
 ## Making the Script Globally Available
 
-To make the `scrcpy-cli-tool.ps1` script globally available on your operating system, you need to add its directory to your system's environment variables.
+To make the `scrcpy-cli.ps1` script globally available on your operating system, you need to add its directory to your system's environment variables.
 
-### Windows
+### Automatically Adding the Directory to the Path
+
+1. Run this script in PowerShell:
+    ```powershell
+    .\scrcpy-cli.ps1
+    ```
+2. Choose the option 5 in the menu to add the directory to the path.
+3. Close and reopen the terminal or command prompt window.
+
+### Manually Adding the Directory to the Path
 
 1. Open the Start Menu and search for "Environment Variables".
 2. Select "Edit the system environment variables".
