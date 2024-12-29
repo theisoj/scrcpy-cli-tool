@@ -131,7 +131,7 @@ function Install-Or-Update-Scrcpy {
         New-Item -ItemType Directory -Force -Path $scrcpyTargetPath | Out-Null
     }
     $extractedFolder = Get-ChildItem $tempPath -Directory | Select-Object -First 1
-    if ($extractedFolder -ne $null) {
+    if ($null -ne $extractedFolder) {
         Get-ChildItem -Path $extractedFolder.FullName -Recurse -Verbose | ForEach-Object {
             $destinationPath = Join-Path -Path $scrcpyTargetPath -ChildPath ($_ | Split-Path -Leaf)
             Move-Item -Path $_.FullName -Destination $destinationPath -Force -Verbose
@@ -150,6 +150,7 @@ function Uninstall-Scrcpy {
     if (Test-Path -Path $scrcpyTargetPath) {
         $confirmation = Read-Host "Are you sure you want to uninstall scrcpy? (y/n)"
         if ($confirmation -eq 'y') {
+            Clear-Host
             Write-Output "Uninstalling scrcpy..."
 
             # Remove scrcpy directory
@@ -269,7 +270,6 @@ do {
             Install-Or-Update-Scrcpy -update
         }
         "3" {
-            Clear-Host
             Uninstall-Scrcpy
         }
         "4" {
@@ -288,7 +288,6 @@ do {
             Clear-Host
             Write-Output "Opening GitHub repository..."
             Start-Process "https://github.com/theisoj/scrcpy-cli-tool"
-
         }
         "8" {
             Clear-Host
@@ -300,9 +299,9 @@ do {
             Write-Output "           CREDITS             "
             Write-Output "==============================="
             Write-Output "Script by: theisoj"
-            Write-Output "==============================="
+            Write-Output ""
             Write-Output "Social Media:"
-            Write-Output "==============================="
+            Write-Output ""
             Write-Output "GitHub: https://github.com/theisoj"
             Write-Output "X: https://x.com/jessekeskela"
             Write-Output "YouTube: https://www.youtube.com/@theisoj"
@@ -310,9 +309,11 @@ do {
             Write-Output "Kick: https://kick.com/theisoj"
             Write-Output "TikTok: https://www.tiktok.com/@theisoj"
             Write-Output "Instagram: https://www.instagram.com/jesseinthemiddle"
-            Write-Output "==============================="
             Write-Output ""
             Write-Output "Thank you for using the SCRCPY CLI Tool!"
+            Write-Output ""
+            Write-Output "==============================="
+
         }
         "10" {
             Clear-Host
