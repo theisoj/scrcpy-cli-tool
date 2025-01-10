@@ -7,13 +7,13 @@ The script checks the version of scrcpy, downloads the latest version from GitHu
 
 #>
 
-$global:currentScriptVersion = "v2024.12.29"
+$global:currentScriptVersion = "v2025.1.10"
 
 # --- Functions ---
 function Show-Menu {
     do {
-        $choice = Read-Host "Please enter your choice (0-11)"
-    } while ($choice -notmatch '^(10|11|[0-9])$')
+        $choice = Read-Host "Please enter your choice (0-12)"
+    } while ($choice -notmatch '^(10|11|12|[0-9])$')
     return $choice
 }
 
@@ -252,10 +252,11 @@ do {
     Write-Output "5. ➕ Add Scrcpy to PATH"
     Write-Output "6. ➖ Remove Scrcpy from PATH"
     Write-Output "7. 🌐 GitHub"
-    Write-Output "8. 🔄 Check for Script Updates"
-    Write-Output "9. 👥 Credits"
-    Write-Output "10. 📝 Help"
-    Write-Output "11. 📄 Show Script Version"
+    Write-Output "8. 🌐 Scrcpy GitHub"
+    Write-Output "9. 🔄 Check for Script Updates"
+    Write-Output "10. 👥 Credits"
+    Write-Output "11. 📝 Help"
+    Write-Output "12. 📄 Show Script Version"
     Write-Output "0. 🚪 Exit"
     Write-Output "==============================="
     Write-Output ""
@@ -291,9 +292,14 @@ do {
         }
         "8" {
             Clear-Host
-            Update-Script -Confirm
+            Write-Output "Opening  scrcpy GitHub repository..."
+            Start-Process "https://github.com/Genymobile/scrcpy"
         }
         "9" {
+            Clear-Host
+            Update-Script -Confirm
+        }
+        "10" {
             Clear-Host
             Write-Output "==============================="
             Write-Output "           CREDITS             "
@@ -315,7 +321,7 @@ do {
             Write-Output "==============================="
 
         }
-        "10" {
+        "11" {
             Clear-Host
             Write-Output "==============================="
             Write-Output "            HELP               "
@@ -329,15 +335,16 @@ do {
             Write-Output "5. Add Scrcpy to PATH: Adds the scrcpy path to the system PATH."
             Write-Output "6. Remove Scrcpy from PATH: Removes the scrcpy path from the system PATH."
             Write-Output "7. GitHub: Opens the GitHub repository for this script."
-            Write-Output "8. Check for Script Updates: Checks for updates to this script."
-            Write-Output "9. Credits: Displays the credits and social media links."
-            Write-Output "10. Help: Displays this help message."
-            Write-Output "11. Show Script Version: Displays the current script version."
+            Write-Output "8. GitHub: Opens the GitHub repository for scrcpy."
+            Write-Output "9. Check for Script Updates: Checks for updates to this script."
+            Write-Output "10. Credits: Displays the credits and social media links."
+            Write-Output "11. Help: Displays this help message."
+            Write-Output "12. Show Script Version: Displays the current script version."
             Write-Output "0. Exit: Exits the script."
             Write-Output ""
             Write-Output "==============================="
         }
-        "11" {
+        "12" {
             Clear-Host
             Write-Output "==============================="
             Write-Output "        SCRIPT VERSION         "
@@ -352,7 +359,7 @@ do {
         }
         default {
             Clear-Host
-            Write-Warning "Invalid choice. Please select a valid option (0-11)."
+            Write-Warning "Invalid choice. Please select a valid option (0-12)."
         }
     }
     if (-not $global:exit) {
